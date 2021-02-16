@@ -38,6 +38,7 @@ body{
 
 .ui.centered.card{
     width:fit-content !important;
+    min-width: 40%;
     box-shadow:4px 4px 10px #242a2e !important;
 }
 

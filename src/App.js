@@ -2,7 +2,7 @@ import React from 'react';
 import CustRecorder from './CustRecorder';
 import Home from './Home';
 import {get} from 'idb-keyval';
-import {Header} from 'semantic-ui-react';
+import {Header,Container} from 'semantic-ui-react';
 
 class App extends React.Component{
   
@@ -49,10 +49,12 @@ class App extends React.Component{
     if(this.state.context==="home"){
       return(
         <div>
-          <Header as="h1" className="appName">
-          <span role="img" aria-label="app icon">  🎙️ </span>
-          Voice Notes</Header>
-          <Home key="01" setContextNew={this.setContextNew} setNotes={this.setNotes}/>
+          <Container fluid={true}>
+            <Header as="h1" className="appName">
+            <span role="img" aria-label="app icon">  🎙️ </span>
+            Voice Notes</Header>
+            <Home key="01" setContextNew={this.setContextNew} setNotes={this.setNotes}/>
+          </Container>
         </div>
       );
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactMic } from '@cleandersonlobo/react-mic';
 import { ReactMic as MReactMic } from '@matuschek/react-mic';
 import {set,get} from 'idb-keyval';
-import {Button,Container,Input,Radio} from 'semantic-ui-react';
+import {Button,Container,Radio} from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay,faStop } from '@fortawesome/free-solid-svg-icons';
  
@@ -34,7 +34,6 @@ class CustRecorder extends React.Component{
     }
     
     onStop = (recordedBlob) => {
-        // console.log('recordedBlob is: ', recordedBlob);
         this.saveNote(recordedBlob);
     }
 
@@ -69,14 +68,13 @@ class CustRecorder extends React.Component{
     render() {
         return (
           <Container className="recorder">
-            <Input placeholder={`new Note_${this.state.notes.length+1}`} onChange={this.setNoteName} size="big" className="recorder-note-name"/>
+            {/* <Input placeholder={`new Note_${this.state.notes.length+1}`} onChange={this.setNoteName} size="big" className="recorder-note-name"/> */}
             <Radio toggle onChange={this.toggleVisualStyle}/>
             <MReactMic
               record={this.state.record}
               className="sound-wave"
               strokeColor="#9575cd"
               visualSetting={this.state.visualStyle}
-              // mimeType="audio/mp3"
               backgroundColor="#374046"/>
             <ReactMic
               record={this.state.record}

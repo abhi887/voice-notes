@@ -108,7 +108,7 @@ class Home extends React.Component{
                         <h1>{i.name}</h1>
                     </Card.Header>
                     <Card.Content>
-                        <audio controls src={URL.createObjectURL(i.blob.blob)} data-filename={i.name} key={key}></audio><br/>
+                        <audio controls src={URL.createObjectURL(i.blob.blob)} data-filename={i.name} key={key} style={{"maxWidth": "-webkit-fill-available"}}></audio><br/>
                         <hr/>
                         <Button type="button" data-name={i.name} onClick={this.deleteNote} color="red">
                             Delete&nbsp;&nbsp;
@@ -127,7 +127,7 @@ class Home extends React.Component{
             return(
                 <div>
                 <Container centered="true" className="homeCards">
-                    <Card.Group>
+                    <Card.Group doubling={true} stackable={true} itemsPerRow={3} centered={true}>
                         {[...tmp]}
                         <Divider/>
                         <div className="createNewButtonContainer">
