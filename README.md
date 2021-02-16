@@ -9,6 +9,9 @@ As of now it has no backend at all and uses `idb-keyval` database which is simpl
 top IndexedDB of the browser. As all the data is stored locally, you'll never have to worry about it leaving your
 device.
 
+## Downloads
+[Android](https://github.com/abhi887/voice-notes/blob/main/bin/voice%20notes.apk)
+
 ## Prerequisites (for development)
 - [Nodejs](nodejs.org)
 - [npm](npmjs.org)
