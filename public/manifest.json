@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "voice notes",
+  "name": "Voice notes for productivity",
   "icons": [
     {
       "src": "favicon.ico",

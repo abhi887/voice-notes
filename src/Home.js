@@ -3,6 +3,7 @@ import {get, set} from 'idb-keyval';
 import {Button,Container,Divider,Card,Modal,Input,Header} from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus,faTools,faTrashAlt,faEdit } from '@fortawesome/free-solid-svg-icons';
+// import { MediaRecorderWrapper } from '@cleandersonlobo/react-mic';
 
 class Home extends React.Component{
     constructor(){
@@ -16,11 +17,21 @@ class Home extends React.Component{
         }
     }
     
-    checkSupport = () =>{
-        let userAgent = navigator.userAgent;
-        if((window.screen.height<840 && window.screen.width<1200) || !(/chrome/i.test(userAgent))){
-            this.setState({openUnsupported:true});
-            // console.log(JSON.stringify(this.state));
+    checkSupport = async () =>{
+        // let userAgent = navigator.userAgent;
+        // if((window.screen.height<840 && window.screen.width<1200) || !(/chrome/i.test(userAgent))){
+        let appSupported = localStorage.getItem("appSupported") === null ? false : localStorage.getItem("appSupported");
+        if(!appSupported){
+            try{
+                let tmp = window.indexedDB.open("*");
+                let tmp1 = await navigator.mediaDevices.getUserMedia({audio:true});
+                console.log(tmp,tmp1);
+                localStorage.setItem("appSupported","true");
+            }
+            catch(e){
+                this.setState({openUnsupported:true});
+                localStorage.setItem("appSupported","false");
+            }
         }
     }
 
