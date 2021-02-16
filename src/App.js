@@ -49,7 +49,9 @@ class App extends React.Component{
     if(this.state.context==="home"){
       return(
         <div>
-          <Header as="h1" className="appName">🎙️ Voice Notes</Header>
+          <Header as="h1" className="appName">
+          <span role="img" aria-label="app icon">  🎙️ </span>
+          Voice Notes</Header>
           <Home key="01" setContextNew={this.setContextNew} setNotes={this.setNotes}/>
         </div>
       );

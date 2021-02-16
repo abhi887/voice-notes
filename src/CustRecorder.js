@@ -2,7 +2,7 @@ import React from 'react';
 import { ReactMic } from '@cleandersonlobo/react-mic';
 import { ReactMic as MReactMic } from '@matuschek/react-mic';
 import {set,get} from 'idb-keyval';
-import {Button,Container,Input} from 'semantic-ui-react';
+import {Button,Container,Input,Radio} from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay,faStop } from '@fortawesome/free-solid-svg-icons';
  
@@ -14,6 +14,7 @@ class CustRecorder extends React.Component{
           record: false,
           notes:[],
           noteName:"",
+          visualStyle:"sinewave"
         }
     }
      
@@ -50,10 +51,18 @@ class CustRecorder extends React.Component{
     setNoteName = (e) => {
       this.setState({
         noteName:e.target.value,
-      })
+      });
     }
      
+    toggleVisualStyle = (e) => {
+      this.setState({
+        visualStyle: this.state.visualStyle === "sinewave" ? "frequencyBars" : "sinewave",
+      });
+      this.componentDidMount();
+    }
+
     componentDidMount(){
+        console.log(`state = ${this.state.visualStyle}`);
         this.initiateNotes();
     }
 
@@ -61,11 +70,12 @@ class CustRecorder extends React.Component{
         return (
           <Container className="recorder">
             <Input placeholder={`new Note_${this.state.notes.length+1}`} onChange={this.setNoteName} size="big" className="recorder-note-name"/>
+            <Radio toggle onChange={this.toggleVisualStyle}/>
             <MReactMic
               record={this.state.record}
               className="sound-wave"
               strokeColor="#9575cd"
-              // visualSetting="frequencyBars"
+              visualSetting={this.state.visualStyle}
               // mimeType="audio/mp3"
               backgroundColor="#374046"/>
             <ReactMic
@@ -75,7 +85,7 @@ class CustRecorder extends React.Component{
               // onData={this.onData}
               // strokeColor="#ff5722"
               strokeColor="#9575cd"
-              // visualSetting="frequencyBars"
+              // visualSetting={this.state.visualStyle}
               mimeType="audio/mp3"
               backgroundColor="#374046"/>
             <br/>

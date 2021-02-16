@@ -2,7 +2,7 @@ import React from 'react';
 import {get, set} from 'idb-keyval';
 import {Button,Container,Divider,Card,Modal,Input,Header} from 'semantic-ui-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus,faTools } from '@fortawesome/free-solid-svg-icons';
+import { faPlus,faTools,faTrashAlt,faEdit } from '@fortawesome/free-solid-svg-icons';
 
 class Home extends React.Component{
     constructor(){
@@ -31,30 +31,30 @@ class Home extends React.Component{
         }));
     }
 
-    upload = async(e) => {
-        e.persist();
-        const blob=e.target.dataset.blob;
-        const user=e.target.dataset.user;
-        const name=e.target.dataset.name;
+    // upload = async(e) => {
+    //     e.persist();
+    //     const blob=e.target.dataset.blob;
+    //     const user=e.target.dataset.user;
+    //     const name=e.target.dataset.name;
 
-        const form = new FormData();
-        form.append("blob",blob);
-        form.append("user",user);
-        form.append("name",name);
+    //     const form = new FormData();
+    //     form.append("blob",blob);
+    //     form.append("user",user);
+    //     form.append("name",name);
 
-        const response = await fetch('http://localhost:5000/addnote', {
-            method: 'POST',
-            headers: { 
-                        'Access-Control-Allow-Origin': "*"
-            },
-            body: form,
-        }).then(e=>console.log(`fetch reponse = ${e.json()}`))
-        .catch(e=>console.log("fetch error"))
-        .then(e=>console.log(`fetch success = ${e}`));
+    //     const response = await fetch('http://localhost:5000/addnote', {
+    //         method: 'POST',
+    //         headers: { 
+    //                     'Access-Control-Allow-Origin': "*"
+    //         },
+    //         body: form,
+    //     }).then(e=>console.log(`fetch reponse = ${e.json()}`))
+    //     .catch(e=>console.log("fetch error"))
+    //     .then(e=>console.log(`fetch success = ${e}`));
 
-        // console.log(`fetch reponse = ${JSON.stringify(response)}`);
+    //     // console.log(`fetch reponse = ${JSON.stringify(response)}`);
 
-    }
+    // }
 
     deleteNote = (e) => {
         e.persist();
@@ -110,8 +110,14 @@ class Home extends React.Component{
                     <Card.Content>
                         <audio controls src={URL.createObjectURL(i.blob.blob)} data-filename={i.name} key={key}></audio><br/>
                         <hr/>
-                        <Button type="button" data-name={i.name} onClick={this.deleteNote} color="red">Delete</Button>
-                        <Button type="button" data-name={i.name} onClick={this.setToChangeNote}>Edit</Button>
+                        <Button type="button" data-name={i.name} onClick={this.deleteNote} color="red">
+                            Delete&nbsp;&nbsp;
+                            <FontAwesomeIcon icon={faTrashAlt}/>
+                        </Button>
+                        <Button type="button" data-name={i.name} onClick={this.setToChangeNote}>
+                            Edit&nbsp;&nbsp;
+                            <FontAwesomeIcon icon={faEdit}/>
+                        </Button>
                     </Card.Content>
                     {/* <button type="button" onClick={this.upload} data-blob={i.blob.blob} data-user={"admin"} data-name={i.name}>Upload</button> */}
                 </Card>);
@@ -126,7 +132,7 @@ class Home extends React.Component{
                         <Divider/>
                         <div className="createNewButtonContainer">
                             <Button type="button" className="createNewButton" onClick={this.props.setContextNew} key="03" size="huge" color="green">New &nbsp;
-                                {/* <FontAwesomeIcon icon={faPlus}/> */}
+                                <FontAwesomeIcon icon={faPlus}/>
                             </Button>
                         </div>
                     </Card.Group>
