@@ -1,6 +1,8 @@
 # voice-notes
 A webapp made with react for taking voice notes created as part of 36 hour hackathon.
 
+#### [checkout live in production](https://voice-notes.abhi887.vercel.app)
+
 ## About
 `voice-notes` is a webapp that helps you keep track of your thoughts or ideas in the form of voice notes/memos.
 As of now it has no backend at all and uses `idb-keyval` database which is simple key-value database built on
