@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "app.vercel.abhi887.voice_notes.twa",
+                   "sha256_cert_fingerprints": ["33:82:3A:CE:7C:5B:92:EC:B5:62:24:24:DC:D5:CD:50:71:E4:58:90:84:CB:FB:83:89:DD:8A:09:BC:24:FB:FF"] }
+    }]
