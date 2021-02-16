@@ -68,8 +68,8 @@ class CustRecorder extends React.Component{
     render() {
         return (
           <Container className="recorder">
-            {/* <Input placeholder={`new Note_${this.state.notes.length+1}`} onChange={this.setNoteName} size="big" className="recorder-note-name"/> */}
-            <Radio toggle onChange={this.toggleVisualStyle}/>
+            <Input placeholder={`new Note_${this.state.notes.length+1}`} onChange={this.setNoteName} size="big" className="recorder-note-name"/>
+            {/* <Radio toggle onChange={this.toggleVisualStyle}/> */}
             <MReactMic
               record={this.state.record}
               className="sound-wave"

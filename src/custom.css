@@ -63,5 +63,5 @@ body{
 
 .recorder-note-name{
     margin-top:2% !important;
-    opacity: 80% !important;
+    /* opacity: 80% !important; */
 }
